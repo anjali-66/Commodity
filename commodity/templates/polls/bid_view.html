@@ -1,0 +1,21 @@
+{% extends 'Products/base.html' %}
+
+{% block title %}Place Bid{% endblock %}
+
+{% block content %}
+<h1>Place a Bid for {{ Products.item_name }}</h1>
+
+<p>Description: {{ Products.item_description }}</p>
+<p>Minimum Quote Price: ${{ Products.quote_price_per_month }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="bid_price_per_month">Your Bid Price (per month):</label>
+    <input type="number" name="bid_price_per_month" min="{{ Products.quote_price_per_month }}" required><br>
+
+    <label for="bid_duration">Bid Duration (in months):</label>
+    <input type="number" name="bid_duration" min="1" required><br><br>
+
+    <input type="submit" value="Place Bid">
+</form>
+{% endblock %}

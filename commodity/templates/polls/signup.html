@@ -1,0 +1,40 @@
+<!-- {% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}     -->
+
+
+{% extends 'Products/base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<h1>Sign Up</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="email">Email:</label>
+    <input type="email" name="email" required><br>
+
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" required><br>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br>
+
+    <label for="type">User Type:</label>
+    <select name="type" required>
+        <option value="renter">Renter</option>
+        <option value="lender">Lender</option>
+    </select><br><br>
+
+    <input type="submit" value="Sign Up">
+</form>
+{% endblock %}
